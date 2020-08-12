@@ -1,6 +1,9 @@
 const core = require("@actions/core");
 const fetch = require("node-fetch");
 
+console.log('foo');
+throw new Error('bar');
+
 async function github_query(github_token, query, variables) {
   return fetch("https://api.github.com/graphql", {
     method: "POST",
