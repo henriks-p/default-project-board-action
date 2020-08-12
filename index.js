@@ -39,7 +39,7 @@ async function run() {
     const issue_vars = {
       owner,
       name,
-      number: issue
+      number: parseInt(issue, 10)
     };
 
     const issue_resp = await github_query(
