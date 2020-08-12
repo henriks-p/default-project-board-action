@@ -43,7 +43,7 @@ async function run() {
       get_issue_id,
       issue_vars
     );
-    console.log(issue_resp);
+    console.dir(issue_resp, { depth: null });
     const issue_id = issue_resp["data"]["repository"]["issue"]["id"];
 
     console.log(`Adding issue ${issue} to project ${project_id}`);
