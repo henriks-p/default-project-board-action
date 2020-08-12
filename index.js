@@ -1,9 +1,6 @@
 const core = require("@actions/core");
 const fetch = require("node-fetch");
 
-console.log('foo');
-throw new Error('bar');
-
 async function github_query(github_token, query, variables) {
   return fetch("https://api.github.com/graphql", {
     method: "POST",
@@ -26,8 +23,6 @@ async function run() {
     const github_token = core.getInput("github_token");
     const owner = repository.split("/")[0];
     const name = repository.split("/")[1];
-
-    console.log('test');
 
     console.log(JSON.stringify({
       issue, repository, project_id
