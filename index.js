@@ -24,6 +24,10 @@ async function run() {
     const owner = repository.split("/")[0];
     const name = repository.split("/")[1];
 
+    console.log({
+      issue, repository, project_id
+    });
+
     const get_issue_id = `
     query($owner:String!, $name:String!, $number:Int!){
       repository(owner: $owner, name: $name) {
@@ -35,7 +39,7 @@ async function run() {
     const issue_vars = {
       owner,
       name,
-      number: parseInt(issue)
+      number: issue
     };
 
     const issue_resp = await github_query(
