@@ -19,7 +19,7 @@ async function run() {
   try {
     const issue = core.getInput("issue");
     const repository = core.getInput("repository");
-    const project = core.getInput("project");
+    const project_id = core.getInput("project");
     const github_token = core.getInput("github_token");
     const owner = repository.split("/")[0];
     const name = repository.split("/")[1];
@@ -45,28 +45,6 @@ async function run() {
     );
     console.log(issue_resp);
     const issue_id = issue_resp["data"]["repository"]["issue"]["id"];
-
-    const get_project_id = `
-    query($owner:String!, $name:String!, $number:Int!){
-      repository(owner: $owner, name: $name) {
-        project(number: $number) {
-          id
-        }
-      }
-    }`;
-    const project_vars = {
-      owner,
-      name,
-      number: parseInt(project)
-    };
-
-    const project_resp = await github_query(
-      github_token,
-      get_project_id,
-      project_vars
-    );
-    console.log(project_resp);
-    const project_id = project_resp["data"]["repository"]["project"]["id"];
 
     console.log(`Adding issue ${issue} to project ${project}`);
     console.log("");
