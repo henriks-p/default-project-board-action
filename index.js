@@ -24,9 +24,11 @@ async function run() {
     const owner = repository.split("/")[0];
     const name = repository.split("/")[1];
 
-    console.log({
+    console.log('test');
+
+    console.log(JSON.stringify({
       issue, repository, project_id
-    });
+    }));
 
     const get_issue_id = `
     query($owner:String!, $name:String!, $number:Int!){
