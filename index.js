@@ -46,8 +46,7 @@ async function run() {
     console.log(issue_resp);
     const issue_id = issue_resp["data"]["repository"]["issue"]["id"];
 
-    console.log(`Adding issue ${issue} to project ${project}`);
-    console.log("");
+    console.log(`Adding issue ${issue} to project ${project_id}`);
 
     query = `
     mutation($issueId:ID!, $projectId:ID!) {
